@@ -25,7 +25,6 @@ Grid.prototype.cleanGrid = function() {
 }
 
 Grid.prototype.update = function(tetromino) {
-
 	for (var i = 0 ; i < tetromino.shape.length; i++) {
 		for (var j = 0 ; j < tetromino.shape[i].length; j++ ) {
 			this.grid[tetromino.rowColPos.row+i][tetromino.rowColPos.col+j] = 1;
@@ -35,7 +34,7 @@ Grid.prototype.update = function(tetromino) {
 
 Grid.prototype.saveUsedSpace = function() {
 	for ( var i = 0 ; i < this.grid.length; i++ ) {
-		this.landed[i] = this.grid.slice(0);
+		this.landed[i] = this.grid[i].slice(0);
 	};
 }
 
@@ -43,7 +42,7 @@ Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {
 	var _tetromino = tetromino;
 	for (var i = 0 ; i < _tetromino.shape.length; i++) {
 		for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
-			if ( this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 ) {
+			if ( !this.landed[_tetromino.rowColPos.row+i] || this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 ) {
 				return true;
 			}
 		}

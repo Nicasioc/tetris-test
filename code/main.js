@@ -26,7 +26,12 @@ var ellapsedTime = 0;
 
 setInterval( function() {
 
+	if (tetromino.landed) {
+		tetromino = new Tetromino( [[1,1],[1,1]] );
+	}
+
 	tetromino.moveDown();
+
 	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
 		tetromino.moveUp();
 		grid.update(tetromino);
