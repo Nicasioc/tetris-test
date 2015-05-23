@@ -1,7 +1,7 @@
 function Grid(GRID) {
 	this.grid = GRID;
 	this.gridToShow="";
-	this.landed = this.grid;
+	this.landed = [];
 }
 
 Grid.prototype.draw = function() {
@@ -33,12 +33,10 @@ Grid.prototype.update = function(tetromino) {
 	};
 };
 
-Grid.prototype.getGrid = function() {
-	return this.grid;
-}
-
 Grid.prototype.saveUsedSpace = function() {
-	this.landed = this.grid;
+	for ( var i = 0 ; i < this.grid.length; i++ ) {
+		this.landed[i] = this.grid.slice(0);
+	};
 }
 
 Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {

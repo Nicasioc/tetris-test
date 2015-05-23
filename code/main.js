@@ -6,6 +6,7 @@ grid.draw();
 
 var tetromino = new Tetromino( [[1,1],[1,1]] );
 
+grid.saveUsedSpace();
 grid.update(tetromino);
 
 /*
@@ -28,12 +29,13 @@ setInterval( function() {
 	tetromino.moveDown();
 	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
 		tetromino.moveUp();
+		grid.update(tetromino);
 		grid.saveUsedSpace();
-		grid.update(tetromino);
 		tetromino.landed = true;
-	} else {
-		grid.update(tetromino);
 		grid.cleanGrid();
+	} else {
+		grid.cleanGrid();
+		grid.update(tetromino);
 	}
 
 	grid.draw();
