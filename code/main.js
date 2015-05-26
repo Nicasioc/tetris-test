@@ -1,13 +1,14 @@
 
+var testingTetromino = [[1,1],[0,1],[0,1]];
 
 var grid = new Grid(CONFIG.grid);
 
-grid.draw();
 
-var tetromino = new Tetromino( [[1,1],[1,1]] );
+var tetromino = new Tetromino( testingTetromino );
 
-grid.saveUsedSpace();
+//grid.saveUsedSpace();
 grid.update(tetromino);
+grid.draw();
 
 /*
     EVENT LISTENER
@@ -27,7 +28,7 @@ var ellapsedTime = 0;
 setInterval( function() {
 
 	if (tetromino.landed) {
-		tetromino = new Tetromino( [[1,1],[1,1]] );
+		tetromino = new Tetromino( testingTetromino );
 	}
 
 	tetromino.moveDown();
