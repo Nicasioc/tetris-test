@@ -1,9 +1,24 @@
 /**
-* SHAPE [[1,1],[1,1]]
+ * Returns random or specific tetromino with al rotation shapes
+ * tetrominosObj OBJ with all tetrominoes
+ * rowColPos {} if empty {"row":0,"col":0}
+ * shape STRING letter with the shape of the tetromino, if empty selects random shape
 **/
-function Tetromino(SHAPE, rowColPos) {
+function Tetromino(tetrominosObj, rowColPos, shape) {
 	this.indexShape = 0;
-	this.AllShapes = SHAPE
+
+
+
+	var _shape = shape;
+	if ( !_shape ) {
+		var shapeList = Object.keys(tetrominosObj);
+		var shapeIndex = Math.floor((Math.random() * shapeList.length-1) + 1);
+		_shape = shapeList[shapeIndex];
+	}
+
+	this.AllShapes = tetrominosObj[_shape]
+
+
 	this.shape = this.AllShapes[ this.indexShape ];
 	this.rowColPos = rowColPos||{"row":0,"col":0};
 	this.landed = false;

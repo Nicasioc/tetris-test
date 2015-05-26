@@ -1,10 +1,7 @@
 
-var testingTetromino = CONFIG.tetrominos.j;
-
 var grid = new Grid(CONFIG.grid);
 
-
-var tetromino = new Tetromino( testingTetromino );
+var tetromino = new Tetromino( CONFIG.tetrominos );
 
 //grid.saveUsedSpace();
 grid.update(tetromino);
@@ -26,12 +23,10 @@ document.body.addEventListener("keydown", function (e) {
     }
 });
 
-var ellapsedTime = 0;
-
 setInterval( function() {
 
 	if (tetromino.landed) {
-		tetromino = new Tetromino( testingTetromino );
+		tetromino = new Tetromino( CONFIG.tetrominos );
 	}
 
 	tetromino.moveDown();
