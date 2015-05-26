@@ -1,5 +1,5 @@
 
-var testingTetromino = [[1,1],[0,1],[0,1]];
+var testingTetromino = CONFIG.tetrominos.j;
 
 var grid = new Grid(CONFIG.grid);
 
@@ -15,6 +15,9 @@ grid.draw();
 */
 
 document.body.addEventListener("keydown", function (e) {
+    if( e.keyCode == 38 ) {
+    	tetromino.rotate();
+    }
     if( e.keyCode == 37 ) {
         tetromino.moveLeft();
     }
