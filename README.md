@@ -4,14 +4,20 @@ WIP
 
 ##TODO
 
-- Fix side collision.
-- Rotate tetrominoes.
+- ~~Fix side collision.~~
+- ~~Rotate tetrominoes.~~
 - Detect completed lines.
 	- Score
-- Add diferent tetrominoes (Size and color)
+- Add remaining tetrominoes
 - Next tetromino preview.
+- Lose/Win condition.
+- Keyboar events.
+- Improbe drawing.
+- Improbe Loop.
 
 ### Unknown future
+- Mobile
+- Refactor
 - Multiplayer
 	- local
 	- online

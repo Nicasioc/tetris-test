@@ -58,10 +58,14 @@ Grid.prototype.saveUsedSpace = function() {
 Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {
 	var _tetromino = tetromino;
 	for (var i = 0 ; i < _tetromino.shape.length; i++) {
-		for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
-			if ( !this.landed[_tetromino.rowColPos.row+i] || this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 && _tetromino.shape[i][j] == 1 ) {
-				return true;
+		if ( typeof this.landed[_tetromino.rowColPos.row+i] !== 'undefined' ) {
+			for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
+				if ( typeof this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] === 'undefined' || this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 && _tetromino.shape[i][j] == 1 ) {
+					return true;
+				}
 			}
+		} else {
+			return true;
 		}
 	};
 	return false;

@@ -16,10 +16,16 @@ document.body.addEventListener("keydown", function (e) {
     	tetromino.rotate();
     }
     if( e.keyCode == 37 ) {
-        tetromino.moveLeft();
+    	tetromino.moveLeft();
+    	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+        	tetromino.moveRight();
+    	}
     }
     if( e.keyCode == 39 ) {
         tetromino.moveRight();
+        if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+        	tetromino.moveLeft();
+    	}
     }
 });
 
