@@ -5,22 +5,24 @@ function Grid(GRID) {
 	for ( var i = 0 ; i < this.grid.length; i++ ) {
 		this.landed[i] = GRID[i].slice(0);
 	}
+	this.emptyRow = GRID[0].slice(0);
+	this.fullRowsIndexes = [];
 }
 
 
 Grid.prototype.draw = function() {
 	this.gridToShow="";
 	for ( var i = 0 ; i < this.grid.length; i++ ) {
-		this.gridToShow+="|";
+		this.gridToShow+="<div class='row'>";
 		for (var j = 0; j < this.grid[i].length; j++) {
-			if ( this.landed[i] && this.landed[i][j] == 1 ) {
-				this.gridToShow+= "[1]";
+			if ( this.landed[i] && this.landed[i][j] == 1 || this.grid[i][j] == 1 ) {
+				this.gridToShow+= "<div class='cell full'></div>";
 			}else {
-				this.gridToShow+= "["+this.grid[i][j]+"]";
+				this.gridToShow+= "<div class='cell empty'></div>";
 
 			}
 		};
-		this.gridToShow += "|\n";
+		this.gridToShow += "</div>";
 	};
 	document.getElementById("game").innerHTML = this.gridToShow;
 };
@@ -70,3 +72,44 @@ Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {
 	};
 	return false;
 }
+
+Grid.prototype.checkForFullRows = function() {
+	var lineIsFull = false;
+	var fullLinesIndexes = [];
+	for ( var i = 0 ; i < this.landed.length; i++ ) {
+		for (var j = 0; j < this.landed[i].length; j++) {
+			if ( this.landed[i][j] == 1 ) {
+				lineIsFull = true;
+			} else {
+				lineIsFull = false;
+				break;
+			}
+		}
+		if ( lineIsFull ) {
+			fullLinesIndexes.push(i);
+			lineIsFull = false;
+		}
+	};
+
+	if ( fullLinesIndexes.length > 0 ) {
+		this.fullRowsIndexes = fullLinesIndexes;
+		return fullLinesIndexes; //return this for future use by UI
+	} else {
+		return false;
+	}
+
+	//landed.indexOf(1) != -1
+	//a.unshift()
+	//a.splice()
+}
+
+//remove rows by index and adds new empty row on top by default
+// rowsIndexes ARRAY list of indexes
+Grid.prototype.removeRows = function( rowsIndexes ) {
+	var rowsToRemove = rowsIndexes||this.fullRowsIndexes
+
+	for (var i = 0; i < rowsToRemove.length; i++) {
+		this.landed.splice( rowsToRemove[i] )
+		this.landed.unshift( this.emptyRow.slice(0) );
+	};
+};

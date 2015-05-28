@@ -1,7 +1,9 @@
-
+var ui = new Ui();
 var grid = new Grid(CONFIG.grid);
 
 var tetromino = new Tetromino( CONFIG.tetrominos );
+
+var score = 0;
 
 //grid.saveUsedSpace();
 grid.update(tetromino);
@@ -42,7 +44,15 @@ setInterval( function() {
 		grid.update(tetromino);
 		grid.saveUsedSpace();
 		tetromino.landed = true;
+
+		if ( grid.checkForFullRows() ) {
+			grid.removeRows();
+			ui.calculateScore( grid.fullRowsIndexes );
+			ui.drawScore("score1");
+		}
+
 		grid.cleanGrid();
+
 	} else {
 		grid.cleanGrid();
 		grid.update(tetromino);

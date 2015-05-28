@@ -5,8 +5,43 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
+body {
+	text-align: center;
+}
+#gameWrapper {
+  display: inline-block;
+}
+.score1 {
+	font-family: arial;
+}
 #game {
-	  white-space: pre;
+  display: inline-block;
   text-align: center;
+}
+.row {
+	display: block;
+	height: 10px;
+}
+.row:last-child .cell {
+	border-bottom: 1px solid #000;
+}
+.row:first-child .cell {
+	border-top: 1px solid #000;
+}
+.cell {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+}
+.cell:last-child {
+	border-right: 1px solid #000;
+}
+.cell:first-child {
+	border-left: 1px solid #000;
+}
+.empty {
+	background-color: #00f;
+}
+.empty {
+	background-color: #ddd;
 }
