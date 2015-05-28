@@ -45,3 +45,8 @@ body {
 .empty {
 	background-color: #ddd;
 }
+
+.next {
+	display: inline-block;
+	vertical-align: top;
+}

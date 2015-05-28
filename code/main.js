@@ -1,11 +1,15 @@
 var ui = new Ui();
-var grid = new Grid(CONFIG.grid);
+var grid = new Grid(CONFIG.grid,"game");
+var gridNext = new Grid(CONFIG.nextGrid,"next1");
 
 var tetromino = new Tetromino( CONFIG.tetrominos );
-
+var nextTetromino = new Tetromino( CONFIG.tetrominos );
 var score = 0;
 
-//grid.saveUsedSpace();
+
+gridNext.update(nextTetromino);
+gridNext.draw();
+
 grid.update(tetromino);
 grid.draw();
 
@@ -34,7 +38,11 @@ document.body.addEventListener("keydown", function (e) {
 setInterval( function() {
 
 	if (tetromino.landed) {
-		tetromino = new Tetromino( CONFIG.tetrominos );
+		tetromino = nextTetromino;
+		nextTetromino = new Tetromino( CONFIG.tetrominos );
+		gridNext.cleanGrid();
+		gridNext.update(nextTetromino);
+		gridNext.draw();
 	}
 
 	tetromino.moveDown();

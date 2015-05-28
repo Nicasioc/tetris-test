@@ -1,4 +1,5 @@
-function Grid(GRID) {
+function Grid(GRID, domId) {
+	this.domEl = document.getElementById(domId);
 	this.grid = GRID;
 	this.gridToShow="";
 	this.landed = [];
@@ -24,7 +25,7 @@ Grid.prototype.draw = function() {
 		};
 		this.gridToShow += "</div>";
 	};
-	document.getElementById("game").innerHTML = this.gridToShow;
+	this.domEl.innerHTML = this.gridToShow;
 };
 
 Grid.prototype.cleanGrid = function() {
