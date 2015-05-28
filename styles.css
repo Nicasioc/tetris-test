@@ -20,7 +20,7 @@ body {
 }
 .row {
 	display: block;
-	height: 10px;
+	height: 20px;
 }
 .row:last-child .cell {
 	border-bottom: 1px solid #000;
@@ -29,8 +29,8 @@ body {
 	border-top: 1px solid #000;
 }
 .cell {
-	width: 10px;
-	height: 10px;
+	width: 20px;
+	height: 20px;
 	display: inline-block;
 }
 .cell:last-child {

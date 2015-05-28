@@ -4,6 +4,7 @@ WIP
 
 ##TODO
 
+- Improve Keyboar events.
 - ~~Fix side collision.~~
 - ~~Rotate tetrominoes.~~
 - ~~Detect completed lines.~~
@@ -11,7 +12,6 @@ WIP
 - Add remaining tetrominoes
 - Next tetromino preview.
 - Lose/Win condition.
-- Keyboar events.
 - Improbe drawing.
 - Improbe Loop.
 
