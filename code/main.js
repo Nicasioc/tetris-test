@@ -5,7 +5,7 @@ var gridNext = new Grid(CONFIG.nextGrid,"next1");
 var tetromino = new Tetromino( CONFIG.tetrominos );
 var nextTetromino = new Tetromino( CONFIG.tetrominos );
 var score = 0;
-
+var keys = [];
 
 gridNext.update(nextTetromino);
 gridNext.draw();
@@ -18,25 +18,23 @@ grid.draw();
 */
 
 document.body.addEventListener("keydown", function (e) {
-    if( e.keyCode == 38 ) {
-    	tetromino.rotate();
-    }
-    if( e.keyCode == 37 ) {
-    	tetromino.moveLeft();
-    	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
-        	tetromino.moveRight();
-    	}
-    }
-    if( e.keyCode == 39 ) {
-        tetromino.moveRight();
-        if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
-        	tetromino.moveLeft();
-    	}
-    }
+    keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+	keys[e.keyCode] = false;
 });
 
-setInterval( function() {
+/**/
 
+var fps = 30;
+var interval = 1000 / fps;
+
+function draw() {
+    setTimeout(function() {
+
+    requestAnimationFrame(draw);
+
+	//create new tetromino if actual landed
 	if (tetromino.landed) {
 		tetromino = nextTetromino;
 		nextTetromino = new Tetromino( CONFIG.tetrominos );
@@ -45,6 +43,27 @@ setInterval( function() {
 		gridNext.draw();
 	}
 
+	//keyboar inputs
+	if( keys[38] ) {
+    	tetromino.rotate();
+    	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+        	tetromino.AllShapes[ tetromino.indexShape - 1 ];
+    	}
+    }
+    if( keys[37] ) {
+    	tetromino.moveLeft();
+    	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+        	tetromino.moveRight();
+    	}
+    }
+    if( keys[39] ) {
+        tetromino.moveRight();
+        if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+        	tetromino.moveLeft();
+    	}
+    }
+
+    //moving tetromino down
 	tetromino.moveDown();
 
 	if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
@@ -69,5 +88,7 @@ setInterval( function() {
 	grid.draw();
 
 
-
-	}, 500);
+    }, interval);
+}
+draw();
+/**/
