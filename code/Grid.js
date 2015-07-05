@@ -8,6 +8,7 @@ function Grid(GRID, domId) {
 	}
 	this.emptyRow = GRID[0].slice(0);
 	this.fullRowsIndexes = [];
+	this.full = false;
 }
 
 
@@ -64,6 +65,9 @@ Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {
 		if ( typeof this.landed[_tetromino.rowColPos.row+i] !== 'undefined' ) {
 			for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
 				if ( typeof this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] === 'undefined' || this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 && _tetromino.shape[i][j] == 1 ) {
+					if (tetromino.rowColPos.row == 1) {
+						this.full = true;
+					}
 					return true;
 				}
 			}

@@ -10,6 +10,7 @@ body {
 }
 #gameWrapper {
   display: inline-block;
+  position: relative;
 }
 .score1 {
 	font-family: arial;
@@ -39,8 +40,9 @@ body {
 .cell:first-child {
 	border-left: 1px solid #000;
 }
-.empty {
-	background-color: #00f;
+.full {
+  background-color: #fff;
+  border: 1px solid #6C6C6C;
 }
 .empty {
 	background-color: #ddd;
@@ -49,4 +51,30 @@ body {
 .next {
 	display: inline-block;
 	vertical-align: top;
+}
+
+#alert {
+position: absolute;
+  top: 30%;
+  width: 180px;
+  padding: 20px 0;
+  border: 1px solid #000;
+  margin: 0 10px;
+  background: #fff;
+  display: none;
+  box-shadow: 3px 3px #000;
+}
+#alert #subMessage {
+	margin: 10px auto;
+}
+#alert #action {
+  display: none;
+  cursor: pointer;
+  width: 50%;
+  padding: 5px;
+  margin: auto;
+  border: 1px solid #696969;
+  border-radius: 6px;
+  box-shadow: inset 0 0 6px;
+  background-color: #FFFDFD;
 }
