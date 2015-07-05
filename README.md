@@ -10,6 +10,7 @@ WIP
 ##TODO
 
 - Improve Keyboar events.
+- Use canvas instead of DOM.
 - ~~Fix side collision.~~
 - ~~Rotate tetrominoes.~~
 - ~~Detect completed lines.~~
