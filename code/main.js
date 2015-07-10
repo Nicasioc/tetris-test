@@ -95,7 +95,6 @@ function draw() {
                     tetromino.landed = true;
 
                     if ( grid.checkForFullRows() ) {
-                        grid.removeRows();
                         ui.calculateScore( grid.fullRowsIndexes );
                         ui.drawScore("score1");
                     }

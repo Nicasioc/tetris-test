@@ -2,16 +2,15 @@
 
 WIP
 
-## BUGS
-- Removing lines is broken.
-
 ##TODO
 
 - Remove Jquery
 - Improve Keyboar events.
 - Use canvas instead of DOM.
 - ~~Fix side collision.~~
-- Fix Rotation next to walls.
+- Fix Rotation
+	- next to walls.
+	- rotate centered
 - ~~Rotate tetrominoes.~~
 - ~~Detect completed lines.~~
 	- ~~Score~~

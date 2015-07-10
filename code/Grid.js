@@ -90,40 +90,41 @@ Grid.prototype.checkAllCollisions = function( tetromino ) {
 Grid.prototype.checkForFullRows = function() {
 	var lineIsFull = false;
 	var fullLinesIndexes = [];
+	var colCount = 0;
 	for ( var i = 0 ; i < this.landed.length; i++ ) {
 		for (var j = 0; j < this.landed[i].length; j++) {
 			if ( this.landed[i][j] == 1 ) {
-				lineIsFull = true;
+				colCount++;
 			} else {
 				lineIsFull = false;
 				break;
 			}
 		}
-		if ( lineIsFull ) {
+		if ( colCount == this.grid[0].length ) {
 			fullLinesIndexes.push(i);
 			lineIsFull = false;
 		}
+		colCount = 0;
 	};
 
 	if ( fullLinesIndexes.length > 0 ) {
 		this.fullRowsIndexes = fullLinesIndexes;
-		return fullLinesIndexes; //return this for future use by UI
+		this.removeRows( fullLinesIndexes );
+		fullLinesIndexes = [];
+		return true; //return this for future use by UI
 	} else {
 		return false;
 	}
 
-	//landed.indexOf(1) != -1
-	//a.unshift()
-	//a.splice()
 }
 
 //remove rows by index and adds new empty row on top by default
 // rowsIndexes ARRAY list of indexes
 Grid.prototype.removeRows = function( rowsIndexes ) {
-	var rowsToRemove = rowsIndexes||this.fullRowsIndexes
+	var rowsToRemove = rowsIndexes;
 
 	for (var i = 0; i < rowsToRemove.length; i++) {
-		this.landed.splice( rowsToRemove[i] )
+		this.landed.splice( rowsToRemove[i], 1 )
 		this.landed.unshift( this.emptyRow.slice(0) );
 	};
 };
