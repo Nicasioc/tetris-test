@@ -3,21 +3,21 @@
 WIP
 
 ## BUGS
-- Game over message wen pressing the arrow after tetromino landed.
-- Removing lines somtimes leaves space in the middle.
-- ~~ Spawning new tetromino after another has landed. ~~
+- Removing lines is broken.
 
 ##TODO
 
+- Remove Jquery
 - Improve Keyboar events.
 - Use canvas instead of DOM.
 - ~~Fix side collision.~~
+- Fix Rotation next to walls.
 - ~~Rotate tetrominoes.~~
 - ~~Detect completed lines.~~
 	- ~~Score~~
 - ~~Next tetromino preview.~~
 - Win condition.
-- ~~Lose condition.~~
+- Lose condition.
 - Improbe drawing.
 - Improbe Loop.
 - Add remaining tetrominoes

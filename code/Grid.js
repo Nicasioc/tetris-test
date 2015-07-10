@@ -62,20 +62,29 @@ Grid.prototype.saveUsedSpace = function() {
 Grid.prototype.tetrominoTouchedUsedSpace = function(tetromino) {
 	var _tetromino = tetromino;
 	for (var i = 0 ; i < _tetromino.shape.length; i++) {
-		if ( typeof this.landed[_tetromino.rowColPos.row+i] !== 'undefined' ) {
-			for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
-				if ( typeof this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] === 'undefined' || this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 && _tetromino.shape[i][j] == 1 ) {
-					if (tetromino.rowColPos.row == 1) {
-						this.full = true;
-					}
-					return true;
-				}
+		for (var j = 0 ; j < _tetromino.shape[i].length; j++ ) {
+			if ( this.landed[_tetromino.rowColPos.row+i][_tetromino.rowColPos.col+j] == 1 && _tetromino.shape[i][j] == 1 ) {
+				return true;
 			}
-		} else {
-			return true;
 		}
 	};
 	return false;
+}
+
+Grid.prototype.tetrominoTouchedBounds = function(tetromino) {
+	if (  tetromino.rowColPos.col+tetromino.shape[0].length > this.grid[0].length || tetromino.rowColPos.col < 0 || tetromino.rowColPos.row+tetromino.shape.length > this.grid.length ) {
+		return true;
+	}
+	return false;
+}
+
+Grid.prototype.checkAllCollisions = function( tetromino ) {
+	if( this.tetrominoTouchedBounds(tetromino) ) {
+		return true;
+	} else if ( this.tetrominoTouchedUsedSpace(tetromino) ) {
+		return true;
+	}
+		return false;
 }
 
 Grid.prototype.checkForFullRows = function() {

@@ -34,13 +34,13 @@ document.body.addEventListener("keydown", function (e) {
 });
 
 document.body.addEventListener("keyup", function (e) {
-    //keys[e.keyCode] = false;
+    keys[e.keyCode] = false;
 });
 
 /**/
 
 var fps = 30,
-    interval = 500 / fps,
+    interval = 1000 / fps,
     t=0,
     tInterval = fps*0.5;
 
@@ -60,33 +60,35 @@ function draw() {
             //keyboar inputs
             if( keys[38] ) {
                 tetromino.rotate();
-                if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
-                    tetromino.AllShapes[ tetromino.indexShape - 1 ];
+                if ( grid.checkAllCollisions(tetromino) ) {
+                    tetromino.shape = tetromino.AllShapes[ tetromino.indexShape - 1 ];
                 }
                 keys[38] = false;
             }
             if( keys[37] ) {
                 tetromino.moveLeft();
-                if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+                if ( grid.checkAllCollisions(tetromino) ) {
                     tetromino.moveRight();
                 }
-                keys[37] = false;
             }
             if( keys[39] ) {
                 tetromino.moveRight();
-                if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+                if ( grid.checkAllCollisions(tetromino) ) {
                     tetromino.moveLeft();
                 }
-                keys[39] = false;
             }
+
+            grid.cleanGrid();
+            grid.update(tetromino);
             grid.draw();
 
             if ( t == tInterval ) {
+            //if ( t == null ) {
 
                 //moving tetromino down
                 tetromino.moveDown();
 
-                if ( grid.tetrominoTouchedUsedSpace(tetromino) ) {
+                if ( grid.checkAllCollisions(tetromino) ) {
                     tetromino.moveUp();
                     grid.update(tetromino);
                     grid.saveUsedSpace();
@@ -123,9 +125,8 @@ function draw() {
             }
         }
 
-        requestAnimationFrame(draw);
+        requestAnimationFrame(draw, "#game");
 
         }, interval);
 }
 draw();
-/**/
