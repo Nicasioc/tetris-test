@@ -42,7 +42,7 @@ document.body.addEventListener("keyup", function (e) {
 var fps = 30,
     interval = 1000 / fps,
     t=0,
-    tInterval = fps*0.5;
+    tInterval = Math.floor( fps*0.50 );
 
 function draw() {
         setTimeout(function() {
@@ -83,7 +83,6 @@ function draw() {
             grid.draw();
 
             if ( t == tInterval ) {
-            //if ( t == null ) {
 
                 //moving tetromino down
                 tetromino.moveDown();
@@ -119,6 +118,7 @@ function draw() {
                 ui.$alert.find("#action").show();
                 ui.$alert.find("#action").on("click", function() {
                     grid = new Grid(CONFIG.grid,"game");
+                    ui.score = 0;
                     ui.hideAlert();
                 });
             }

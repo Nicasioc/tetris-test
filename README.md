@@ -2,24 +2,23 @@
 
 WIP
 
+##BUG
+ - rows not full are removed
+
 ##TODO
 
 - Remove Jquery
 - Improve Keyboar events.
 - Use canvas instead of DOM.
-- ~~Fix side collision.~~
 - Fix Rotation
 	- next to walls.
 	- rotate centered
-- ~~Rotate tetrominoes.~~
-- ~~Detect completed lines.~~
-	- ~~Score~~
-- ~~Next tetromino preview.~~
 - Win condition.
 - Lose condition.
 - Improbe drawing.
 - Improbe Loop.
 - Add remaining tetrominoes
+	- Colors!
 
 ### Unknown future
 - Mobile
