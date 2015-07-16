@@ -3,22 +3,24 @@
 WIP
 
 ##BUG
- - rows not full are removed
+ - Full rows are not removed?
 
 ##TODO
 
-- Remove Jquery
+- Lose condition.
+- Win condition.
+	- levels 
 - Improve Keyboar events.
 - Use canvas instead of DOM.
 - Fix Rotation
 	- next to walls.
 	- rotate centered
-- Win condition.
-- Lose condition.
 - Improbe drawing.
 - Improbe Loop.
 - Add remaining tetrominoes
 	- Colors!
+- Output code to one game.min.JS
+
 
 ### Unknown future
 - Mobile

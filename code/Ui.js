@@ -1,6 +1,6 @@
 function UI() {
 	this.score = 0;
-	this.$alert = $("#alert");
+	this.elAlert = document.getElementById("alert");
 }
 
 UI.prototype.drawScore = function(domElId) {
@@ -13,10 +13,10 @@ UI.prototype.calculateScore = function( rowsIndexes ) {
 }
 
 UI.prototype.showAlert = function(message, subMessage) {
-	this.$alert.show();
-    this.$alert.find("#message").html(message);
-    this.$alert.find("#subMessage").html(subMessage);
+	this.elAlert.style.display = "block";
+    this.elAlert.querySelector("#message").innerHTML = message;
+    this.elAlert.querySelector("#subMessage").innerHTML = subMessage;
 }
 UI.prototype.hideAlert = function() {
-	this.$alert.hide();
+	this.elAlert.style.display = "none";
 }

@@ -115,8 +115,9 @@ function draw() {
         } else {
             if(grid.full) {
                 ui.showAlert("GAME OVER", ui.score);
-                ui.$alert.find("#action").show();
-                ui.$alert.find("#action").on("click", function() {
+                var btnAlertAction = document.getElementById("action");
+                btnAlertAction.style.display = "block"
+                btnAlertAction.addEventListener("click", function() {
                     grid = new Grid(CONFIG.grid,"game");
                     ui.score = 0;
                     ui.hideAlert();
