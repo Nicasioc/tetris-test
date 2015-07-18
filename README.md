@@ -6,20 +6,18 @@ WIP
  - Full rows are not removed?
 
 ##TODO
-
-- Lose condition.
+- Refactor main.js
 - Win condition.
-	- levels 
+- Improve config.
 - Improve Keyboar events.
 - Use canvas instead of DOM.
 - Fix Rotation
 	- next to walls.
 	- rotate centered
 - Improbe drawing.
-- Improbe Loop.
 - Add remaining tetrominoes
 	- Colors!
-- Output code to one game.min.JS
+- Output code to one game.min.JS (node+grunt)
 
 
 ### Unknown future

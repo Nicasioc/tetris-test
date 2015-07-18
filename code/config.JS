@@ -52,4 +52,17 @@ var CONFIG = {
                  ]
                 ]
         }
+    }
+
+var Levels = {
+    1: {
+        "objective": 2,
+        "speed": 0.3,
+        "grid": []
+    },
+    2: {
+        "objective": 4,
+        "speed": 0.25,
+        "grid": []
+    }
 }

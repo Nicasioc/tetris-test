@@ -4,9 +4,13 @@ var gridNext = new Grid(CONFIG.nextGrid,"next1");
 
 var tetromino = new Tetromino( CONFIG.tetrominos );
 var nextTetromino = new Tetromino( CONFIG.tetrominos );
+
 var score = 0;
+var currentLevel = 1;
+
 var keys = [];
 var pause = false;
+
 gridNext.update(nextTetromino);
 gridNext.draw();
 
@@ -40,12 +44,25 @@ document.body.addEventListener("keyup", function (e) {
 /**/
 
 var fps = 30,
-    interval = 1000 / fps,
+    interval = 2000 / fps,
     t=0,
-    tInterval = Math.floor( fps*0.50 );
+    tInterval = Math.floor( fps*Levels[1].speed );
+
+function levelsControl(currentScore, currentLevel) {
+
+    if (currentScore >= Levels[currentLevel].objective) {
+        currentLevel=+1;
+        if ( currentLevel > Object.keys(Levels).lengt ) {
+            grid.full = true;
+        } else {
+            tInterval = Math.floor( fps*Levels[currentLevel].speed );
+        }
+    };
+
+}
 
 function draw() {
-        setTimeout(function() {
+    setTimeout(function() {
     if ( !pause && !grid.full ) {
 
             //create new tetromino if actual landed
@@ -96,6 +113,7 @@ function draw() {
                     if ( grid.checkForFullRows() ) {
                         ui.calculateScore( grid.fullRowsIndexes );
                         ui.drawScore("score1");
+                        levelsControl(ui.score,currentLevel)
                     }
 
                     grid.cleanGrid();
