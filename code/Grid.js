@@ -2,12 +2,12 @@ function Grid(GRID, domId) {
 	this.domEl = document.getElementById(domId);
 	this.grid = GRID;
 	this.gridToShow="";
-	this.landed = [];
+	this.landed = new Array(GRID.lenght);
 	for ( var i = 0 ; i < this.grid.length; i++ ) {
 		this.landed[i] = GRID[i].slice(0);
 	}
 	this.emptyRow = GRID[0].slice(0);
-	this.fullRowsIndexes = [];
+	this.fullRowsIndexes = new Array;
 	this.full = false;
 }
 

@@ -8,8 +8,8 @@ var nextTetromino = new Tetromino( CONFIG.tetrominos );
 var score = 0;
 var currentLevel = 1;
 
-var keys = [];
-var pause = false;
+var keys = {};
+var pause, win = false;
 
 gridNext.update(nextTetromino);
 gridNext.draw();

@@ -9,7 +9,7 @@ WIP
 - Refactor main.js
 - Win condition.
 - Improve config.
-- Improve Keyboar events.
+- Improve Keyboard events.
 - Use canvas instead of DOM.
 - Fix Rotation
 	- next to walls.
