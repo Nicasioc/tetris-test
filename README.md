@@ -2,10 +2,10 @@
 
 WIP
 
-##BUG
+## BUG
  - Full rows are not removed?
 
-##TODO
+## TODO
 - Refactor main.js
 - Win condition.
 - Improve config.
